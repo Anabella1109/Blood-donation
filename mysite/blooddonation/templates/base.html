@@ -1,5 +1,5 @@
 {% load bootstrap4 %}
-
+{% load static %}
 <!DOCTYPE html>
 <html>
 
@@ -16,17 +16,33 @@
 
   {% block styles %}
     {% bootstrap_css %}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
   {% endblock %}
 
 </head>
 
 <body>
+  {% include "navbar.html" %}
 
   {% block content %}  {%endblock%}
 
 
   {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+      function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+  document.getElementById("main").style.marginLeft = "250px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+/* Set the width of the side navigation to 0 and the left margin of the page content to 0, and the background color of body to white */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft = "0";
+  document.body.style.backgroundColor = "white";
+}
+    </script>
     {% bootstrap_javascript %}
   {% endblock %}
 

@@ -1,0 +1,67 @@
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% block content %}
+<div id="title"> 
+    <h1>Blood donation eligibility quiz</h1>
+</div>
+<div id="forme">
+ <center> <form action="result()" id="formee">
+     <div class="qs">
+    Are you over the age of 18: <br>
+    YES <input type="radio" name="age" id="yes" value="1"> <br>
+    NO <input type="radio" name="age" id="no" value="0"> <br>
+</div>
+    
+<div class="qs"> 
+    Have you gotten a new tatoo in the last 6 months?<br>
+    YES <input type="radio" name="tat" id="yes" value="1"> <br>
+    NO <input type="radio" name="tat" id="no" value="0"> <br>
+    </div>
+
+    <div class="qs">
+        Are you pregnant? <br>
+        YES <input type="radio" name="preg" id="yes" value="1"> <br>
+        NO <input type="radio" name="preg" id="no" value="0"> <br>
+        </div>
+        
+        <div class="qs">
+            Are you breastfeeding? <br>
+            YES <input type="radio" name="boob" id="yes" value="1"> <br>
+            NO <input type="radio" name="boob" id="no" value="0"> <br>
+            </div> 
+            
+         <div class="qs">
+                Have you been on your period in the last 10 days?(Choose no if it does not apply) <br>
+                YES <input type="radio" name="perry" id="yes" value="1"> <br>
+                NO <input type="radio" name="perry" id="no" value="0"> <br>
+                </div>
+    
+         <div class="qs">
+                    Have you been on your period in the last 10 days?(Choose no if it does not apply) <br>
+                    YES <input type="radio" name="ok" id="yes" value="1"> <br>
+                    NO <input type="radio" name="ok" id="no" value="0"> <br>
+                    </div>
+            <div class="qs">
+                        Have you been on your period in the last 10 days?(Choose no if it does not apply) <br>
+                        YES <input type="radio" name="bye" id="yes" value="1"> <br>
+                        NO <input type="radio" name="bye" id="no" value="0"> <br>
+                        </div>
+        
+                        <div id="sub">
+                            <button type="submit">SUBMIT</button>
+                        </div>
+
+  </form>
+</center>
+</div>
+ 
+{% endblock %}
+
+{% block scripts %}
+<script>
+function result(){
+    alert("Byeee")
+    // let res1= 
+}
+</script>
+{% endblock %}

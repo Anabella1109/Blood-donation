@@ -1,6 +1,6 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
-from .models import Center,Donor, User
+from .models import Center,Donor, User, Profile
 from django import forms
 
 
@@ -50,3 +50,9 @@ class Loginform(forms.ModelForm):
      class Meta:
          model= User
          exclude = []
+
+
+class Profileform(forms.ModelForm):
+     class Meta:
+         model= Profile
+         exclude = ['user']    
