@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %} Events {% endblock %}
+
+{% block content %}
+<center><h1>Events</h1></center>
+<div class="container mt-4">
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Event</th>
+            <th>Description</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Start time</th>
+            <th>End time</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+{% for event in events %}
+<tr>
+  <td>{{event.name}}</td>
+  <td>{{event.description}}</td>
+  <td>{{event.starting}}</td>
+  <td>{{event.ending}}</td>
+  <td>{{event.start_time}}</td>
+  <td>{{event.end_time}}</td>
+  <td>{{event.location}}</td>
+ 
+</tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

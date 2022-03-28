@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.generic import CreateView
-from .models import Donor, Center, User, Profile
-from .form import DonorsSignUpForm,CentersSignUpForm,Loginform,Profileform
+from .models import Donor, Center, User, Profile, Event
+from .form import DonorsSignUpForm,CentersSignUpForm,Loginform,Profileform, EventForm
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
@@ -43,8 +43,14 @@ class center_register(CreateView):
       model= User
       form_class= CentersSignUpForm
       template_name= '../templates/center_register.html'
-      success_url= reverse_lazy('quiz')
+      success_url= reverse_lazy('index')
       success_message= "Account Created"
+
+class create_event(CreateView):
+      model=Event
+      form_class= EventForm
+      template_name='../templates/createevent.html'
+      success_url= reverse_lazy('index')
 
 def profile(request,id):
      user=User.objects.get(id=id)
@@ -58,8 +64,12 @@ def search_results(request):
         searched_projects = Center.search_by_name(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html',{"message":message,"projects": searched_projects})
+        return render(request, 'search.html',{"message":message,"centers": searched_projects})
 
     else:
         message = "You haven't searched for any term"
         return render(request, 'search.html',{"message":message})
+
+def events(request):
+    events=Event.objects.all()
+    return render(request,'events.html', {'events':events})

@@ -2,9 +2,10 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
+from phonenumber_field.modelfields import PhoneNumberField
+# from django.utils.timezone import timezone
 
 class User(AbstractUser):
-    EMAIL_FIELD=models.EmailField(default=False, blank=False)
     # is_superuser=models.BooleanField(default=False)
     is_donor = models.BooleanField(default=False)
     is_center = models.BooleanField(default=False)
@@ -12,17 +13,19 @@ class User(AbstractUser):
 
 class Donor (models.Model):
     user=models.OneToOneField(User , on_delete= models.CASCADE, primary_key=True)
+    email=models.EmailField(default=False, blank=False)
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
-    phone_number=models.IntegerField(max_length=10,null=True)
+    phone_number=PhoneNumberField(default="0700000000")
     location =models.CharField(max_length=100)
 
  
 
 class Center(models.Model):
     user=models.OneToOneField(User , on_delete= models.CASCADE, primary_key=True)
-    name=models.CharField(max_length=100)
-    phone_number=models.IntegerField(max_length=10,null=True)
+    email=models.EmailField(default=False, blank=False)
+    name=models.CharField(max_length=100,blank=False)
+    phone_number=PhoneNumberField(default="0700000000")
     location =models.CharField(max_length=100)
 
     @classmethod
@@ -40,7 +43,7 @@ class Profile(models.Model):
         user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
         first_name=models.CharField(max_length=100,null=True)
         last_name=models.CharField(max_length=100,null=True)
-        phone_number=models.IntegerField(null=True)
+        phone_number=PhoneNumberField(default="0700000000")
         country=models.CharField(max_length=100,default='unknown',null=True)
     
 
@@ -62,17 +65,28 @@ class Profile(models.Model):
 
     
     
-# class Appointment(models.Model):
-#         user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
-#         center=models.ChoicesMeta
-#         first_name=models.CharField(max_length=100,null=True)
-#         last_name=models.CharField(max_length=100,null=True)
-#         phone_number=models.IntegerField(null=True)
-#         country=models.CharField(max_length=100,default='unknown',null=True)
+class Appointment(models.Model):
+        user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+        center=models.OneToOneField(Center,on_delete=models.CASCADE,null=True)
+        first_name=models.CharField(max_length=100,null=True)
+        last_name=models.CharField(max_length=100,null=True)
+        phone_number=PhoneNumberField(default="0700000000")
+        country=models.CharField(max_length=100,default='unknown',null=True)
     
     
+class Event(models.Model):
+    name=models.CharField(max_length=200)
+    description=models.TextField()
+    repetitive=models.BooleanField()
+    starting=models.DateField(null=True)
+    ending=models.DateField(null=True)
+    start_time=models.TimeField(null=True)
+    end_time=models.TimeField(null=True)
+    location=models.CharField(max_length=200)
+
+    def save_event(self):
+            self.save()
+    def delete_event(self):
+            self.delete()
 
 
-
-
-# Create your models here.

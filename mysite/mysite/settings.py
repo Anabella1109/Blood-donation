@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phonenumber_field',
     
 ]
 
@@ -82,11 +83,12 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
     'default': {        
          'ENGINE': 'django.db.backends.postgresql',      
-        'NAME': 'bd',        
+        'NAME': 'bloody',        
          'USER': 'Bella',  
        'PASSWORD':'bellamava',     }
 }
-
+PHONENUMBER_DEFAULT_REGION="RW"
+PHONENUMBER_DB_FORMAT="NATIONAL"
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
