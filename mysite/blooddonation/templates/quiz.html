@@ -5,7 +5,7 @@
     <h1>Blood donation eligibility quiz</h1>
 </div>
 <div id="forme">
- <center> <form action="result()" id="formee">
+ <center> <form action="" id="formee">
      <div class="qs">
     Are you over the age of 18: <br>
     YES <input type="radio" name="age" id="yes" value="1"> <br>
@@ -48,19 +48,84 @@
                         </div>
         
                         <div id="sub">
-                            <button type="submit">SUBMIT</button>
+                            <button type="submit" onclick="result()">SUBMIT</button>
+                            <button type="button" class="btn btn-lg bottom-right" data-toggle="modal" data-target="#votes" style="background-color:none;color:black;">Judges votes</button>
                         </div>
 
   </form>
 </center>
+
 </div>
- 
+<div id="votes" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Results</h4>
+        </div>
+        <div class="modal-body">
+          <div class="row" style="border-bottom:3px dashed black;">
+           
+          <p></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div> 
+</div>
 {% endblock %}
 
 {% block scripts %}
 <script>
 function result(){
-    alert("Byeee")
+    const age=document.querySelector("input[name=age]:checked").value;
+    const tatoo=document.querySelector("input[name=tat]:checked").value;
+    const preggo=document.querySelector("input[name=preg]:checked").value;
+    const boob=document.querySelector("input[name=boob]:checked").value;
+    const perry=document.querySelector("input[name=perry]:checked").value;
+    const bye=document.querySelector("input[name=bye]:checked").value;
+    const answers=[age,tatoo,preggo,boob,perry,bye]
+    const tatalert="To donate Blood , you have to have not gotten a new tattoo for the last six months";
+    const agealert=" You have to be over the age of 18 ";
+    const preggoalert=" You must not be pregnant"
+    const boobalert="You must not be breastfeeding"
+    const perryalert="You must not have hadyour priod in the last ten days"
+    let answer="You are not eligible to donate blood at the moment"
+    
+    if(age==1 && tatoo==0 && preggo == 0 && boob==0 && perry ==0 && bye == 0){
+        answer=""
+        alert("You are viable for blood donation.Please book an appointment at yur center of choice")
+    }
+    if(age==0){
+        answer= answer+ ", "+ agealert
+    }
+    if(tatoo==1){
+        answer= answer+", "+tatalert;
+    }
+    if(preggo==1){
+        answer=answer+", "+preggoalert;
+    }
+    if(boob==1){
+        answer=answer+", "+boobalert;
+    }
+    if(perry==1){
+        answer= answer +", "+ perryalert;
+    };
+    
+    
+
+    
+    console.log(answer)
+    alert(answer)
+    alert(answers)
+    
+    $('#votes').modal('show');
+       $('.model-body').html('answer')
     // let res1= 
 }
 </script>
