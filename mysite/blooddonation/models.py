@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
+from location_field.models.plain import PlainLocationField
 # from django.utils.timezone import timezone
 
 class User(AbstractUser):
@@ -14,8 +15,19 @@ class User(AbstractUser):
 class Donor (models.Model):
     user=models.OneToOneField(User , on_delete= models.CASCADE, primary_key=True)
     email=models.EmailField(default=False, blank=False)
+    CHOICES = (
+        ('AP', 'A+'),
+        ('AM', 'A-'),
+        ('BP', 'B+'),
+        ('BM', 'B-'),
+        ('ABP', 'AB+'),
+        ('ABM', 'AB-'),
+        ('OP', 'O+'),
+        ('OM', 'O-'),
+    )
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
+    blood_group=models.CharField(max_length=20,choices=CHOICES,default='A+')
     phone_number=PhoneNumberField(default="0700000000")
     location =models.CharField(max_length=100)
 
@@ -26,7 +38,7 @@ class Center(models.Model):
     email=models.EmailField(default=False, blank=False)
     name=models.CharField(max_length=100,blank=False)
     phone_number=PhoneNumberField(default="0700000000")
-    location =models.CharField(max_length=100)
+    location =location = PlainLocationField(based_fields=['city'], zoom=7)
 
     @classmethod
     def search_by_name(cls,search_term):

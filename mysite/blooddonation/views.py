@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse
 from django.views.generic import CreateView
 from .models import Donor, Center, User, Profile, Event
@@ -6,6 +6,8 @@ from .form import DonorsSignUpForm,CentersSignUpForm,Loginform,Profileform, Even
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate, login, logout
+
 # from django.core.urlresolvers import reverse
 
 
@@ -18,8 +20,26 @@ def index(request):
 def register(request):
     return render(request,'../templates/register.html')
 
-def login(request):
-    return render(request,'../templates/login.html')
+def log(request):
+    username = request.POST.get('email',"Bella")
+    password = request.POST.get('password',"bellamav")
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        success_url= reverse_lazy('index')
+        return render(request,'../templates/index.html')
+        
+    else:
+        context = {'error': 'Wrong credintials'}  # to display error?
+        return render(request, 'login.html', {'context': context})
+        # Return an 'invalid login' error message.
+       
+def pagelogout(request):
+    logout(request)
+
+    return render(request,'index.html')
+# def login(request):
+#     return render(request,'../templates/login.html')
 
 def quiz(request):
     return render(request,'../templates/quiz.html')
@@ -53,10 +73,12 @@ class create_event(CreateView):
       template_name='../templates/createevent.html'
       success_url= reverse_lazy('index')
 
-def profile(request,id):
-     user=User.objects.get(id=id)
+@login_required(login_url='/login/')
+def profiles(request,email):
+     user=User.objects.get(email=email)
      profile=Profile.objects.get(user=user)
-     projects=Project.objects.filter(user=user)
+     donor=Donor.objects.filter(user=user)
+     return render(request, 'profile.html',{"email":email,"user":user,"profile": profile,'donor':donor})
 
 def search_results(request):
 

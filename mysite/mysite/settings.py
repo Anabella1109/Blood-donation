@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'phonenumber_field',
+    'location_field.apps.DefaultConfig',
     
 ]
 
@@ -89,6 +90,15 @@ DATABASES = {
 }
 PHONENUMBER_DEFAULT_REGION="RW"
 PHONENUMBER_DB_FORMAT="NATIONAL"
+
+LOCATION_FIELD = {
+    'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+    'provider.google.api_key': 'AIzaSyCHe-xBc1Jrqts67JCL0ALviP5J_o5ZDu4',
+    'provider.google.api_libraries': '',
+    'provider.google.map.type': 'ROADMAP',
+    'search.provider': 'google',
+    'map.provider': 'google',
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
