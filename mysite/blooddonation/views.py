@@ -12,7 +12,8 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     # quiz = Quiz.objects.all()
     # para = {'quiz' : quiz}
-    return render(request, 'index.html')
+    centers=Center.objects.all()
+    return render(request, 'index.html',{'centers':centers})
 
 def register(request):
     return render(request,'../templates/register.html')
