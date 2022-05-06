@@ -7,9 +7,20 @@ from phonenumber_field.formfields import PhoneNumberField
 
 
 class DonorsSignUpForm(UserCreationForm):
+    CHOICES = (
+        ('AP', 'A+'),
+        ('AM', 'A-'),
+        ('BP', 'B+'),
+        ('BM', 'B-'),
+        ('ABP', 'AB+'),
+        ('ABM', 'AB-'),
+        ('OP', 'O+'),
+        ('OM', 'O-'),
+    )
     email=forms.EmailField(required=True)
     first_name= forms.CharField(required=True)
     last_name= forms.CharField(required=True)
+    blood_group=forms.ChoiceField(required=True,choices=CHOICES)
     phone_number= forms.CharField(required=True)
     location= forms.CharField(required=True)
 

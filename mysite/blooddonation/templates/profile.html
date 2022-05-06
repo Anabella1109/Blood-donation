@@ -3,29 +3,72 @@
 
  {% block content %}
  {{block.super}}
- <div class="container">
-
+ <div class="container" style="margin-top: 30px;">
+  <div class="row">
 <div class="col-md-6">
-  <img src="{{profile.photo.url}}" alt="" height='200' width='100' id='dp'>
+  <img src="../static/ff.png}" alt="" height='200' width=200' id='dp'>
  </div>
- <div class="col-md-6">
+ <div class="col-md-6" style="background-color: antiquewhite;border-radius: 20px;">
+  <h3>Bio:<br><i>{{user.profile.bio}}</i></h3><br>
+ </div>
+ 
+
+ 
+</div>
+<div class="col-md-6" style="background-color: antiquewhite;border-radius: 20px; margin-top: 20px;">
+  <div class="row">
+   <h3>First name:{{user.profile.first_name}}</h3><br>
+   <h3> {{user.profile.last_name}}</h3><br>
+     <h3>Phone number:{{user.profile.phone_number}}</h3><br>
+       <h3>Email:{{user.email}}</h3><br>
+       {% if user.is_donor %}
+       <h3>Blood Group:{{user.blood_group}}</h3><br>
+       {%endif%}
+         
+
+
+
+</div>
+
+
+
+  
+
+</div>
+ </div>
+ <div class="container">
+   <h3 class="text-center">Suggested events</h3>
    <div class="row">
-    <p>First name:{{user.profile.first_name}}</p>
-    <p>Last name:{{user.profile.last_name}}</p>
-    <p>Phone number:0{{user.profile.phone_number}}</p>
-    <p>Email:{{user.email}}</p>
-<p>Bio:{{user.profile.bio}}</p>
-<div class="row">
+  
+    {%for event in events %}
+    <div class="col-md-4" style=" " >
+  
+       <div class="panel hh">
+           <div style="padding:4px;"></div>
+    <p class='panel panel-heading'>{{event.name}}</p>
+    <div class="panel panel-body">
+       <a href="/events/" > <img src="../static/ff.png" alt="" height="250" id="img" ></a>
+        <p>{{event.location}}</p>
+       </div>
+       <center> <a href="/events/" class="panel panel-footer text-center"> <button>Check</button> </a> </center> </div>
+  </div>
+  {%endfor%}
+  </div>
+ </div>
 
+ <footer>
+  <div id="suggest" class="text-center">
+    <h2 class="text-center">Leave a suggestion</h2>
+    <form action="">
+      Subject:<br>
+      <input type="text"><br>
+      Description:<br>
+      <input type="text-box">
+    </form>
+  </div>
+  <a href="http://"><i class="glyphicon glyphicon-search">Instagram</i></a>
+  <a href="http://"><i class="glyphicon glyphicon-search">Twitter</i></a>
+  <a href="http://"><i class="glyphicon glyphicon-search">Facebook</i></a>
+</footer>
 
-</div>
-
-
-
-   
- 
-</div>
-
- 
-</div>
  {% endblock %}

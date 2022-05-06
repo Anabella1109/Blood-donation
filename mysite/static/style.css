@@ -19,7 +19,7 @@
   
   #top span{
    
-    color: red;
+    color: blanchedalmond;
     
     
   }
@@ -221,10 +221,30 @@ border-radius: 50px;
 }
 
 #whole{
-  margin-top: 200px;
+  margin-top: 20px;
 }
 
-#lefty{
-height: 400px;
+.all{
+height: 200px;
+}
+
+#middle p{
+  padding: 20px;
+  font-size: larger;
+}
+
+footer{
+  background-color: blanchedalmond;
+  margin-top: 50px;
+  width: 100%;
+
+}
+footer a{
+  padding-left: 20%;
+  color: black;
+}
+
+footer input{
+  width: 70%;
 }
 

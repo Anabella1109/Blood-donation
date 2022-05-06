@@ -18,7 +18,7 @@
           <div class="panel-heading">
            <h2>Tip of the day</h2>
           </div>
-          <div class="panel-body" id="lefty">
+          <div class="panel-body all" id="lefty">
 
       <i><p>Love like you've never loved before</p></i>
 </div>
@@ -33,7 +33,7 @@
             <div class="panel-heading">
              
             </div>
-            <div class="panel-body">
+            <div class="panel-body all" style="height: 250px;">
               <p>NCBT (National Center for Blood Transfusion) is the official division of RBC (Rwanda Biomedical Center) responsible for providing safe, effective, and adequate blood and blood products to all patients in need</p>
     
 </div>
@@ -47,7 +47,7 @@
       <div class="panel-heading">
        <h2>Tip of the day</h2>
       </div>
-      <div class="panel-body">
+      <div class="panel-body all">
 
   <i><p>Love like you've never loved before</p></i>
 </div>
@@ -57,4 +57,39 @@
 
 
 </div>
+<div class="container" style="margin-top: 20px;">
+  <h3 class="text-center">Donation centers to check out</h3>
+<div class="row">
+  
+  {%for center in centers %}
+  <div class="col-md-4" style=" " >
+
+     <div class="panel hh">
+         <div style="padding:4px;"></div>
+  <p class='panel panel-heading'>{{center.name}}</p>
+  <div class="panel panel-body">
+     <a href="/events/" > <img src="../static/ff.png" alt="" height="250" id="img" ></a>
+      <p>{{center.location}}</p>
+     </div>
+     <center> <a href="/events/" class="panel panel-footer text-center"> <button>Check</button> </a> </center> </div>
+</div>
+{%endfor%}
+</div>
+</div>
+
+<footer>
+  <div id="suggest" class="text-center">
+    <h2 class="text-center">Leave a suggestion</h2>
+    <form action="">
+      Subject:<br>
+      <input type="text"><br>
+      Description:<br>
+      <input type="text-box">
+    </form>
+  </div>
+  <a href="http://"><i class="glyphicon glyphicon-search">Instagram</i></a>
+  <a href="http://"><i class="glyphicon glyphicon-search">Twitter</i></a>
+  <a href="http://"><i class="glyphicon glyphicon-search">Facebook</i></a>
+</footer>
+
 {% endblock %}
