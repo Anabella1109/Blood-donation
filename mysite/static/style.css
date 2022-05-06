@@ -1,6 +1,6 @@
 #top{
-    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8sN3Kuu2f3s_ddfLHTruJFb-kilNADlzyuA&usqp=CAU');
-    /* background-color: #111; */
+    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8sN3Kuu2f3s_ddfLHTruJFb-kilNADlzyuA&usqp=CAU'); */
+    background-color: #111;
     height:500px;
     width: 100%;
   }
@@ -220,7 +220,11 @@ border-radius: 50px;
   background-color:blanchedalmond ;
 }
 
-#total{
+#whole{
   margin-top: 200px;
+}
+
+#lefty{
+height: 400px;
 }
 
