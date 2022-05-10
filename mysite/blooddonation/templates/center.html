@@ -1,0 +1,43 @@
+{%extends "base.html"%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<div class="panel-heading" id="top3">
+   <h3 class="text-center">{{center.name}} Donation center</h3>
+</div>
+   <div class="container" style="margin-top: 30px;">
+	   <div  class="row">
+	   <div class="col-md-6">
+           <div class="panel">
+               <div class="panel-heading"></div>
+               <div class="panel-body">
+		   <h5>Email:{{center.email}}</h5> <br>
+        <h5> Phone number:{{center.phone_number}}</h5>
+        <div class="panel-footer"></div>
+    </div>
+        </div>
+
+	   </div>
+	   <div class="col-md-6">
+        <div class="panel">
+            <div class="panel-heading">
+                <h3 class="text-center">On going events</h3>
+            </div>
+            <div class="panel-body">
+		   
+		
+		   {% for event in events%}
+            {{event.name}}
+		   {% endfor%}
+    
+        <div class="panel-footer"></div>
+    </div>
+        </div>
+	   </div>
+	</div>
+	
+   </div>
+   <div></div>
+
+{% endblock %}
+

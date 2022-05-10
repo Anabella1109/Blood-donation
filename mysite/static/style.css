@@ -1,7 +1,7 @@
 #top{
-    /* background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8sN3Kuu2f3s_ddfLHTruJFb-kilNADlzyuA&usqp=CAU'); */
-    background-color: #111;
-    height:500px;
+    background-image: url('../static/four.jpeg');
+    /* background-color: #111; */
+    height:550px;
     width: 100%;
   }
   #top h1{
@@ -23,11 +23,56 @@
     
     
   }
+
+  #top2{
+    background-image: url('../static/three.jpg');
+    background-position: bottom;
+    /* background-color: #111; */
+    height:500px;
+    width: 100%;
+  }
+  #top3{
+    background-image: url('../static/two.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: #111; */
+    height:500px;
+    width: 100%;
+  }
+
+  #top3 h3{
+    padding-top:10%;
+    color: white;
+    font-size: 30px;
+
+    
+  }
+  #top2 h1{
+    padding-top:10%;
+    color: white;
+    font-size: 30px;
+    
+  }
+  #top2 h2{
+    
+    color: white;
+    
+    
+  }
+  
+  #top2 span{
+   
+    color: blanchedalmond;
+    
+    
+  }
   
   body{
     font-family: 'Sree Krushnadevaraya', serif;
     font-size:15px;
     background-color: rgb(255,255,255);
+    width: 100%;
   }
   
   
@@ -61,7 +106,7 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: #111; /* Black*/
+    background-color: blanchedalmond; /* Black*/
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
@@ -81,6 +126,7 @@
   .sidenav a:hover {
     color: #f1f1f1;
   }
+ 
   
   /* Position and style the close button (top right corner) */
   .sidenav .closebtn {
@@ -188,15 +234,19 @@
     text-align: center;
   }
 
-  #sub{
+  .sub{
     margin-top: 5px;
     margin-bottom: 8px;
 
   }
-  #sub button{
+  .sub button{
     background-color: black;
     color: blanchedalmond;
     border-radius: 50px;
+  }
+
+  button{
+    background-color: #111;
   }
 .reg{
 padding: 5%;
@@ -228,7 +278,7 @@ border-radius: 50px;
 height: 200px;
 }
 
-#middle p{
+.all h6{
   padding: 20px;
   font-size: larger;
 }
@@ -246,5 +296,57 @@ footer a{
 
 footer input{
   width: 70%;
+}
+
+#panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color: #e5eecc;
+  border: solid 1px #c3c3c3;
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
+
+.containers {
+  position: relative;
+  width: 50%;
+}
+
+.images {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #008CBA;
+}
+
+.containers:hover .overlay {
+  opacity: 1;
+}
+
+.texts {
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 

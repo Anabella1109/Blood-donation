@@ -1,0 +1,11 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+<div>
+{%for message in messages %}
+  <p>{{message.sender.username}}</p>: {{message.message}}
+  <p>{{message.receiver.username}}</p>: {{message.message}}
+
+{%endfor%}
+</div>
+{% endblock %}

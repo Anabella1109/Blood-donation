@@ -1,4 +1,4 @@
-{%extends "base.html"%}
+
 {% load bootstrap4 %} {% load static %}
 {% block content %}
 <!DOCTYPE html>
@@ -17,13 +17,29 @@
 </head>
 
 <div class="container">
-    <form  action="{%url 'edit_profile' user.email %}" method="post" enctype="multipart/form-data">
+  <div class="row">
+    <div class="col-md-4"></div>
+  <div class="col-md-4">
+  <div class="panel">
+    <div class="panel-header" style="background-color: blanchedalmond;">
+      <h3 class="text-center">Update profile</h3>
+
+    </div>
+    <div class="panel panel-body" style="background-color: blanchedalmond;">
+    <form  action="{%url 'edit_profile' user.username %}" method="post" enctype="multipart/form-data">
       {%csrf_token%}
   
       {% bootstrap_form form%}
-      <input type="submit" class="btn btn-success btn-lg" value="Post">
+      <center><input type="submit" class="btn btn-primary btn-sm" value="Update">
+        <a href="{%url 'profiles' user.username %}" class="btn btn-primary btn-sm"><span>Back to profile</span></a></center>
+      
     </form>
   </div>
+  </div>
+</div>
+<div class="col-md-4"></div>
+</div>
+</div>
      {% block scripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     {% bootstrap_javascript %} {% endblock %}

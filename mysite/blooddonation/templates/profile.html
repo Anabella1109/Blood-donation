@@ -9,20 +9,26 @@
   <img src="../static/ff.png}" alt="" height='200' width=200' id='dp'>
  </div>
  <div class="col-md-6" style="background-color: antiquewhite;border-radius: 20px;">
-  <h3>Bio:<br><i>{{user.profile.bio}}</i></h3><br>
+  <p>Bio:<br><i>{{user.profile.bio}}</i></p><br>
  </div>
  
 
  
 </div>
 <div class="col-md-6" style="background-color: antiquewhite;border-radius: 20px; margin-top: 20px;">
-  <div class="row">
-   <h3>First name:{{user.profile.first_name}}</h3><br>
-   <h3> {{user.profile.last_name}}</h3><br>
-     <h3>Phone number:{{user.profile.phone_number}}</h3><br>
-       <h3>Email:{{user.email}}</h3><br>
+  <div class="">
+   <p>First name:{{user.profile.first_name}}</p><br>
+   <p> Last name:{{user.profile.last_name}}</p><br>
+     <p>Phone number:{{user.profile.phone_number}}</p><br>
+       <p>Email:{{user.email}}</p><br>
        {% if user.is_donor %}
-       <h3>Blood Group:{{user.blood_group}}</h3><br>
+       <p>Donor</p>
+       <p>Blood Group:{{user.donor.blood_group}}</p><br>
+       <a href="{{user.profile.instagram}}" class="social"><i class="fas fa-instagram"></i></a>
+       <a href="{{user.profile.twitter}}" class="social"><i class="fas fa-twitter"></i></a>
+       <a href="{{user.profile.facebook}}" class="social"><i class="fas fa-facebook"></i></a>
+       {% elif user.is_center %}
+       <p>Donation center</p>
        {%endif%}
          
 
@@ -66,9 +72,9 @@
       <input type="text-box">
     </form>
   </div>
-  <a href="http://"><i class="glyphicon glyphicon-search">Instagram</i></a>
-  <a href="http://"><i class="glyphicon glyphicon-search">Twitter</i></a>
-  <a href="http://"><i class="glyphicon glyphicon-search">Facebook</i></a>
+  <a href="http://"><i class="fas fa-instagram">Instagram</i></a>
+  <a href="http://"><i class="fas fa-twitter">Twitter</i></a>
+  <a href="http://"><i class="fas fa-facebook">Facebook</i></a>
 </footer>
 
  {% endblock %}

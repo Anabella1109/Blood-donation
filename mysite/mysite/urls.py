@@ -17,10 +17,14 @@ from django.conf.urls import include
 from django.contrib import admin
 from django.urls import path
 from django.contrib.auth import views 
+import notifications.urls
+
 
 urlpatterns = [
     path('',include('blooddonation.urls')),
+    path('',include('chatApp.urls')),
     path('admin/', admin.site.urls),
+    # path('inbox/notifications/', include(notifications.urls, namespace='notifications')),
 
     
     

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard {% endblock %}
+
+{% block content %}
+  {# Include other content here for your dashboard #}
+  <h1>Dashboard</h1>
+{% end block}
+
+{% block footer_js %}
+ // include the scripts tag from above.
+ <script>
+    const csrf_token = getCookie('csrftoken');
+    document.addEventListener('alpine:initializing', () => {
+        Alpine.data('user_notifications_dropdown', () => ({
+			open: false, //drop down state
+            hasUnreadNotifications: false, // purple dot will show if this is true
+            notifications: [], // list of notifications
+            
+            /**
+              Component methods
+             **/
+
+            init(){ 
+              fetch('inbox/notifications/api/all_list/', {
+                method: 'GET',
+                credentials: 'same-origin',
+                headers:{
+                  'Accept': 'application/json',
+                  'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+                  'X-CSRFToken': csrftoken, // declared above, required for the request to succeed.
+                },
+                return response.json() 
+              }).then(data => {
+                  this.notifications = data.all_list
+                  this.hasUnreadNotifications = data.all_list.(item => item.unread === true).length > 0
+              }).catch(err => console.log(err)
+            },
+            toggle() {
+                this.open = ! this.open
+            }
+        }))
+	})
+ </script>
+{% endblock %}

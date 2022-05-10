@@ -3,24 +3,36 @@
 <div class="container">
 
   <div class="row">
+    <div class="panel-heading">
     {% if centers %}
-      <h2>Found {{ centers|length }} of searched term.  {{message}}</h2>
+      <h2 class="text-center">Found {{ centers|length }} of searched term.  {{message}}</h2>
     {% else %}
-      <h2> Found 0 Centers for the search term.  {{message}}</h2>
+      <h2 class="text-center"> Found 0 Centers for the search term.  {{message}}</h2>
     {% endif %}
 
   </div>
-
-  <div class="row">
-
-  {% if centers %}
-    {% for article in centers %}
-      <div class="col-sm-6 col-md-3">
-        <p>{{article.name}}</p>
-         <!-- <a href="/project/{{article.id}}"> <img src="{{article.screenshot.url}}" alt="" height="200"></a> -->
-      </div>
-    {% endfor %}
-  {% endif %}
-  </div>
 </div>
+  <div class="container mt-4">
+    <br>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Centers</th>
+          
+        </tr>
+      </thead>
+
+{% if centers %}
+    {% for article in centers %}
+<tr>
+<td><a href="{% url 'center' article.name %}">{{article.name}}</a></td>
+
+
+</tr>
+{% endfor %}
+{% endif %}
+</table>
+</div>
+
+  
 {% endblock %}

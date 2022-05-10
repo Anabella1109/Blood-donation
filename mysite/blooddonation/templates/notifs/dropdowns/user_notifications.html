@@ -1,0 +1,111 @@
+<div class="relative flex align-center justify-center mr-4"
+     x-data="user_notification_dropdown"
+>
+<!-- navbar button -->  
+<button @click="toggle()"
+          class="p-0 rounded-full focus:outline-none focus:ring-indigo">
+    <span class="sr-only">View notifications</span>
+    <svg class="h-6 w-6 m-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+         aria-hidden="true">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+    </svg>
+</button>
+
+  <!-- purple dot showing user has unread notifications -->
+  <div x-show="hasUnreadNotifications" class="absolute right-0 p-1 bg-indigo-300 rounded-full bottom-3 animate-ping"
+       x-cloak></div>
+  <div x-show="hasUnreadNotifications"
+       class="absolute right-0 p-1 bg-indigo-500 border border-white rounded-full bottom-3" x-cloak></div>
+
+  <div x-show="open"  
+       x-cloak
+       @click.away="open = false"
+       class="absolute z-10 mt-12 w-screen max-w-md sm:px-0 transform -translate-x-48"
+    >
+    <div class="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 max-h-dash-sm overflow-y-scroll relative">
+      <div class="px-5 py-5 bg-gray-50 space-y-6 sm:flex sm:space-y-0 sm:space-x-10 sm:px-8 sticky top-0 z-30">
+        <div class="flow-root">
+          <a href="#"
+             class="-m-3 p-3 flex items-center rounded-md text-base font-medium text-gray-900 hover:bg-gray-100">
+            <span class="ml-3">Activity</span>
+          </a>
+        </div>
+      </div>
+      <!-- list notifications --> 
+      <div class="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+        <template x-for="(item, index) in notifications">
+           <a @click="" class="-m-3 p-3 flex justify-between rounded-lg hover:bg-gray-50">
+              <div class="ml-4">
+                <p class="text-base font-medium text-gray-900" x-text="item.verb"></p>
+                <p class="mt-1 text-sm text-gray-500" x-text="`From ${item.actor}`"></p>
+              </div>
+              <div>
+                <template x-if="item.unread">
+                  <div class="badge badge-sm badge-success">unread</div>
+                </template>
+                <template x-if="!item.unread">
+                  <div class="badge badge-sm badge-ghost">read</div>
+                </template>
+              </div>
+           </a>
+        </template>
+        <template x-if='notifications.length === 0'>
+          <a class="-m-3 p-3 flex justify-between rounded-lg hover:bg-gray-50">
+              <div class="ml-4">
+                <p class="text-base font-medium text-gray-900">You have notifications</p>
+                <p class="mt-1 text-sm text-gray-500">No Notifications</p>
+              </div>
+           </a>
+        </template>
+      </div>
+      
+      <div class="px-2 py-2 space-y-6 flex bg-white justify-center sm:space-y-0 sm:space-x-10 sm:px-8 z-30 border-t">
+        <div class="flow-root">
+          <a href="{% url 'view-name-to-reverse-to-some-view--here' %}"
+             class="-m-3 p-3 flex items-center rounded-md blue-500 font-medium hover:bg-gray-100">
+            <span class="ml-3">Go to notifications page</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    const csrf_token = getCookie('csrftoken');
+    document.addEventListener('alpine:initializing', () => {
+        Alpine.data('user_notifications_dropdown', () => ({
+            
+            /**
+              Component data
+            **/
+            open: false, //drop down state
+            hasUnreadNotifications: false, // purple dot will show if this is true
+            notifications: [], // list of notifications
+            
+            /**
+              Component methods
+             **/
+
+            init(){ 
+              fetch('inbox/notifications/api/all_list/', {
+                method: 'GET',
+                credentials: 'same-origin',
+                headers:{
+                  'Accept': 'application/json',
+                  'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+                  'X-CSRFToken': csrftoken, // declared above, required for the request to succeed.
+                },
+                return response.json() 
+              }).then(data => {
+                  this.notifications = data.all_list
+                  this.hasUnreadNotifications = data.all_list.(item => item.unread === true).length > 0
+              }).catch(err => console.log(err)
+            },
+            toggle() {
+                this.open = ! this.open
+            }
+        }))
+    })
+</script>

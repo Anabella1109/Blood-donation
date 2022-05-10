@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -36,6 +38,7 @@ AUTH_USER_MODEL= 'blooddonation.User'
 INSTALLED_APPS = [
     'bootstrap4',
     'blooddonation.apps.BlooddonationConfig',
+    'chatApp.apps.ChatappConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,6 +47,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'phonenumber_field',
     'location_field.apps.DefaultConfig',
+    'widget_tweaks',
+    'rest_framework',
+    'notifications',
+    
     
 ]
 
@@ -140,8 +147,18 @@ STATICFILES_DIRS = [
 ]
 
 
+
 LOGIN_REDIRECT_URL='index'
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FROM_EMAIL = 'bellaxbx1109@gmail.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'bellaxbx1109@gmail.com'
+EMAIL_HOST_PASSWORD = 'bellaarzaava'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

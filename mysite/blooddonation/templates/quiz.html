@@ -47,9 +47,9 @@
                         NO <input type="radio" name="bye" id="no" value="0"> <br>
                         </div>
         
-                        <div id="sub">
+                        <div class="sub">
                             <button type="submit" onclick="result()">SUBMIT</button>
-                            <button type="button" class="btn btn-lg bottom-right" data-toggle="modal" data-target="#votes" style="background-color:none;color:black;">Judges votes</button>
+                            <!-- <button type="button" class="btn btn-lg bottom-right" data-toggle="modal" data-target="#votes" style="background-color:yellow;color:black;">Judges votes</button> -->
                         </div>
 
   </form>
@@ -68,7 +68,7 @@
         <div class="modal-body">
           <div class="row" style="border-bottom:3px dashed black;">
            
-          <p></p>
+          <p>hhhhhhhhhhhhhhhhhhhhhhhhhh</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -78,6 +78,9 @@
     </div>
   </div> 
 </div>
+
+<div id="flip">Click to slide down panel</div>
+<div id="panel">Hello world!</div>
 {% endblock %}
 
 {% block scripts %}
@@ -122,11 +125,18 @@ function result(){
     
     console.log(answer)
     alert(answer)
-    alert(answers)
+
+  
+  $
+   $("#votes").modal("show")
     
-    $('#votes').modal('show');
-       $('.model-body').html('answer')
-    // let res1= 
+
 }
+
+$(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideDown("slow");
+  });
+});
 </script>
 {% endblock %}

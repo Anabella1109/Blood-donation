@@ -1,0 +1,9 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% block content %}
+<div>
+{%for user in users %}
+  <p>{{user.username}}</p>
+{%endfor%}
+</div>
+{% endblock %}

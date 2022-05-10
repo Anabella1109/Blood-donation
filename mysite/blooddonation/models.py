@@ -1,9 +1,13 @@
 from django.db import models
-from django.contrib.auth.models import AbstractUser
+
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from phonenumber_field.modelfields import PhoneNumberField
 from location_field.models.plain import PlainLocationField
+# from notifications.base.models import AbstractNotification
+from django.contrib.auth.models import AbstractUser
+
+
 # from django.utils.timezone import timezone
 
 class User(AbstractUser):
@@ -16,14 +20,14 @@ class Donor (models.Model):
     user=models.OneToOneField(User , on_delete= models.CASCADE, primary_key=True)
     email=models.EmailField(default=False, blank=False)
     CHOICES = (
-        ('AP', 'A+'),
-        ('AM', 'A-'),
-        ('BP', 'B+'),
-        ('BM', 'B-'),
-        ('ABP', 'AB+'),
-        ('ABM', 'AB-'),
-        ('OP', 'O+'),
-        ('OM', 'O-'),
+        ('A+', 'A+'),
+        ('A-', 'A-'),
+        ('B+', 'B+'),
+        ('B-', 'B-'),
+        ('AB+', 'AB+'),
+        ('AB-', 'AB-'),
+        ('O+', 'O+'),
+        ('O-', 'O-'),
     )
     first_name=models.CharField(max_length=100)
     last_name=models.CharField(max_length=100)
@@ -36,7 +40,7 @@ class Donor (models.Model):
 class Center(models.Model):
     user=models.OneToOneField(User , on_delete= models.CASCADE, primary_key=True)
     email=models.EmailField(default=False, blank=False)
-    name=models.CharField(max_length=100,blank=False)
+    name=models.CharField(max_length=100,blank=False,unique=True)
     phone_number=PhoneNumberField(default="0700000000")
     location =location = PlainLocationField(based_fields=['city'], zoom=7)
 
@@ -53,10 +57,13 @@ class Profile(models.Model):
         # photo=models.ImageField(upload_to='images/',default='images/avatar.jpg')
         bio=models.TextField()
         user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
-        first_name=models.CharField(max_length=100,null=True)
-        last_name=models.CharField(max_length=100,null=True)
+        first_name=models.CharField(max_length=100,null=True,default="Edit your first name...")
+        last_name=models.CharField(max_length=100,null=True,default="Edit your last name...")
         phone_number=PhoneNumberField(default="0700000000")
         country=models.CharField(max_length=100,default='unknown',null=True)
+        instagram=models.CharField(max_length=100,null=True)
+        twitter=models.CharField(max_length=100,null=True)
+        facebook=models.CharField(max_length=100,null=True)
     
 
         def save_profile(self):
@@ -78,15 +85,26 @@ class Profile(models.Model):
     
     
 class Appointment(models.Model):
-        user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
-        center=models.OneToOneField(Center,on_delete=models.CASCADE,null=True)
+        # user=models.OneToOneField(User,on_delete=models.CASCADE,null=True)
+        CHOIX=(
+        ('Whole blood', 'Whole blood'),
+        ('Placelet', 'Placelet'),
+        ('Power red', 'Power red'),
+        ('',''),
+          )
+        donation_type=models.CharField(max_length=20,choices=CHOIX,default='Whole blood')
+        center=models.ForeignKey(Center, on_delete=models.CASCADE, related_name='center',default=None)
         first_name=models.CharField(max_length=100,null=True)
         last_name=models.CharField(max_length=100,null=True)
+        email=models.CharField(max_length=100,null=True)
         phone_number=PhoneNumberField(default="0700000000")
-        country=models.CharField(max_length=100,default='unknown',null=True)
+        date=models.DateField(null=True)
+        time=models.TimeField(null=True)
+        location=models.CharField(max_length=100,default='unknown',null=True)
     
     
 class Event(models.Model):
+    host = models.ForeignKey(Center, on_delete=models.CASCADE, related_name='host',default=None)
     name=models.CharField(max_length=200)
     description=models.TextField()
     repetitive=models.BooleanField()
@@ -100,5 +118,25 @@ class Event(models.Model):
             self.save()
     def delete_event(self):
             self.delete()
+
+class Donation(models.Model):
+    CHOIX=(
+        ('Whole blood', 'Whole blood'),
+        ('Placelet', 'Placelet'),
+        ('Power red', 'Power red'),
+        ('',''),
+          )
+    donor=models.ForeignKey(Donor, on_delete=models.CASCADE, related_name='donor',default=None)
+    donation_type=models.CharField(max_length=20,choices=CHOIX,default='Whole blood')
+    center=models.ForeignKey(Center, on_delete=models.CASCADE, related_name='centre',default=None)
+    datestamp=models.DateTimeField(auto_now_add=True)
+
+# class Notification(AbstractNotification):
+#     # custom field example
+#     category = models.ForeignKey(Event,
+#                                  on_delete=models.CASCADE)
+
+#     class Meta(AbstractNotification.Meta):
+#         abstract = False
 
 

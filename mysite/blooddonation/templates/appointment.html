@@ -1,0 +1,53 @@
+{% load bootstrap4 %} 
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>New Event</title>
+  {{form.media}}
+
+{% block styles %} {% bootstrap_css %}
+  <link rel="stylesheet" href="{% static 'style.css' %}"> {% endblock %}
+
+</head>
+
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6"> 
+				<div class="panel">
+					<div class="panel-heading">
+						<h3 class="text-center">Book appointment</h3>
+					</div>
+					<div class="panel-body">
+
+  <form  action="{%url 'appointment'%}" method="post" enctype="multipart/form-data">
+    {%csrf_token%}
+
+    {% bootstrap_form form%}
+	<center><div class="sub"><button type="submit" class="btn btn-primary btn-lg" action="ale()">Book</button></div></center>
+  </form>
+</div>
+<div class="panel-footer"></div>
+</div>
+</div>
+<div class="col-md-3"></div>
+</div>
+</div>
+   {% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+  function ale(){
+         alert("Appointment Booked")
+  }
+  </script>
+  {% bootstrap_javascript %} {% endblock %}
+
+</body>
+
+</html>
