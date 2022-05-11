@@ -3,8 +3,15 @@
 {% block content %}
 <div>
 {%for message in messages %}
-  <p>{{message.sender.username}}</p>: {{message.message}}
-  <p>{{message.receiver.username}}</p>: {{message.message}}
+  
+  <!-- <div class="panel-heading" style="float:left;">
+    <p>{{message.receiver.username}}</p>: {{message.message}}
+  </div> -->
+  <div class="panel-heading" style="float:right;">
+    <p>{{message.sender.username}}</p>: {{message.message}}
+  </div>
+  <!-- <p>{{message.sender.username}}</p>: {{message.message}}
+  <p>{{message.receiver.username}}</p>: {{message.message}} -->
 
 {%endfor%}
 </div>

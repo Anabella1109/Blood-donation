@@ -21,10 +21,10 @@ def message_view(request, sender, receiver):
         return redirect('index')
     if request.method == "GET":
         sender1=User.objects.get(username=sender)
-        receiver1=User.objects.get(username=receiver)
+        receiver1=User.objects.get(username="Bella")
         return render(request, "messages.html",
                       {'users': User.objects.exclude(username=request.user.username),
-                       'receiver': User.objects.get(username=receiver),
+                       'receiver': User.objects.get(username="Bella"),
                        'sender':User.objects.get(username=sender),
                        'messages': Message.objects.filter(sender_id=sender1, receiver_id=receiver1) |
                                    Message.objects.filter(sender_id=receiver1, receiver_id=sender1)})

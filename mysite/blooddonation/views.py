@@ -26,6 +26,13 @@ def index(request):
 def requirements(request):
     return render(request,'../templates/requirements.html')
 
+def types(request):
+    return render(request,'../templates/types.html')
+
+def tips(request):
+    return render(request,'../templates/tips.html')
+
+
 def register(request):
     return render(request,'../templates/register.html')
 

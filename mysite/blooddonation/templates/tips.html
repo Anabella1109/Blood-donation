@@ -1,0 +1,247 @@
+{%extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static %}
+{% block content %}
+<body>
+	<div id="top4" style="text-align: end; padding-left: 24%;padding-top: 14%; color: blanchedalmond; font-family: Verdana, Geneva, Tahoma, sans-serif;font-size: 80px;">
+		<h1 class="text-center" style="color: blanchedalmond;">What to Do Before, During and After Your Donation </h1>
+		<!-- <h2 class="text-center" style="color: blanchedalmond;">Help by donating</h2> -->
+		<!-- <center><a href="http://www.rwandaredcross.org/-Volunteer-with-us-.html"><div class="sub"><button class="btn btn-primary btn-lg">Learn more</button></div></a></center> -->
+		<h2 class="text-center"> <span> </span></h2>
+		</div>
+	<div class="container" style="margin-top: 70px;">
+		<div class="row">
+		  <div class="col-md-12">
+			<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+			  <div class="panel-heading" style="background-color: white;">
+				  <h3 class="text-center">What to do before a donation</h3>
+			  </div>
+			  <div class="panel-body" style="background-color: white;">
+				  <div class="row" style="margin-right: 5px; padding: 30px; padding-left: 17%;">
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Make an appointment</h4></i></div>
+								<center><a href="{% url 'appointment' %}"><div class="sub"><button class="btn btn-primary btn-sm">Book</button></div></a></center>
+						</div>
+					</div>
+					  
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Have an iron rich dish</h4></i></div>
+								<center><a href="https://www.redcrossblood.org/donate-blood/dlp/iron-rich-food-guide.html"><div class="sub"><button class="btn btn-primary btn-sm">Learn more</button></div></a></center>
+						</div>
+					  </div>
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Be Well Rested and Hydrate</h4></i></div>
+								<center><a href="https://www.redcrossblood.org/donate-blood/how-to-donate/common-concerns/health-and-wellness.html"><div class="sub"><button class="btn btn-primary btn-sm">Learn more</button></div></a></center>
+						</div>
+					  </div>
+					  <div class="col-md-2"></div>
+				  </div>
+				  <div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+					<div class="panel-heading" style="background-color: white;">
+				<h4 class="text-center"> Additional tips</h4>
+				
+					 </div>
+					<div class="panel-body" style="background-color: white; padding-bottom: 10px;">
+						<ul>
+							<li><h5>Donating Platelets? Don't take aspirin for 2 days before your appointment. Learn About Platelet Donations.</h5></li>
+							<li><h5>Ask a friend to donate at the same time . You can support each other and do twice as much good!</h5></li>
+											</ul>	
+				</div>
+				  </div>
+			  </div>
+			  <div class="panel-footer"></div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+	  <div class="container" style="margin-top: 0px;">
+		<div class="row">
+		  <div class="col-md-12">
+			<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+			  <div class="panel-heading" style="background-color: white;">
+				  <h3 class="text-center">On the day of Donation</h3>
+			  </div>
+			  <div class="panel-body" style="background-color: white;">
+				  <div class="row" style="margin-right: 5px; padding: 30px; padding-left: 17%;">
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Take eligibility Quiz</h4></i>
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Best taken on day</h4></i>
+								<center><a href="{% url 'quiz' %}"><div class="sub"><button class="btn btn-primary btn-sm">Take Quiz</button></div></a></center>
+						</div>
+					</div>
+					  </div>
+					  
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Bring identification document</h4></i>
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">ex:Nation ID</h4></i>
+								<!-- <center><a href="https://www.redcrossblood.org/donate-blood/dlp/iron-rich-food-guide.html"><div class="sub"><button class="btn btn-primary btn-sm">Learn more</button></div></a></center> -->
+						</div>
+					  </div>
+					  </div>
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Medication list</h4></i>
+								<i><h5 style="padding: 10px;padding-top: 20px;text-align: center;">All prescription and over-the-counter medications you're taking.</h5></i>
+								<!-- <center><a href="https://www.redcrossblood.org/donate-blood/how-to-donate/common-concerns/health-and-wellness.html"><div class="sub"><button class="btn btn-primary btn-sm">Learn more</button></div></a></center> -->
+						</div>
+					  </div>
+					  </div>
+					  <!-- <div class="col-md-2"></div> -->
+				  </div>
+				  <div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+					<div class="panel-heading" style="background-color: white;">
+				<h4 class="text-center"> Additional tips</h4>
+				
+					 </div>
+					<div class="panel-body" style="background-color: white; padding-bottom: 10px;">
+						<ul>
+							<li><h5>Drink an extra 0.5 litres of water (or other nonalcoholic drink) before your appointment.</h5></li>
+							<li><h5>Eat a healthy meal, avoiding fatty foods like hamburgers, fries or ice cream.</h5></li>
+							<li><h5>Wear a shirt with sleeves that you can roll up above your elbows.</h5></li>
+							<li><h5>Let us know if you have a preferred arm or particular vein that has been used successfully in the past to draw blood..</h5></li>
+							<li><h5>Relax, listen to music, talk to other donors or read while you donate.</h5></li>
+											</ul>	
+				</div>
+				  </div>
+			  </div>
+			  <div class="panel-footer"></div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+	  <div class="container" style="margin-top: 0px;">
+		<div class="row">
+		  <div class="col-md-12">
+			<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+			  <div class="panel-heading" style="background-color: white;">
+				  <h3 class="text-center">After Donation</h3>
+			  </div>
+			  <div class="panel-body" style="background-color: white;">
+				  <div class="row" style="margin-right: 5px; padding: 30px; padding-left: 17%;">
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Enjoy a snack</h4></i>
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">You have earned it!</h4></i>
+								<!-- <center><a href="{% url 'quiz' %}"><div class="sub"><button class="btn btn-primary btn-sm">Take Quiz</button></div></a></center> -->
+						</div>
+					</div>
+					  </div>
+					  
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Tell others about you deed</h4></i>
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">It encourages others</h4></i>
+								<!-- <center><a href="https://www.redcrossblood.org/donate-blood/dlp/iron-rich-food-guide.html"><div class="sub"><button class="btn btn-primary btn-sm">Learn more</button></div></a></center> -->
+						</div>
+					  </div>
+					  </div>
+					  <div class="col-md-3">
+						<div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+							<div class="panel-heading" style="background-color: white;">
+								<img src="/static/sangre.jpg" alt="" height="150" width="150">
+							</div>
+							<div class="panel-body" style="background-color: white;">
+								<i><h4 style="padding: 10px;padding-top: 20px;text-align: center;">Drink Extra liquids</h4></i>
+								<i><h5 style="padding: 10px;padding-top: 20px;text-align: center;">More water and less alcohol</h5></i>
+								<!-- <center><a href="https://www.redcrossblood.org/donate-blood/how-to-donate/common-concerns/health-and-wellness.html"><div class="sub"><button class="btn btn-primary btn-sm">Learn more</button></div></a></center> -->
+						</div>
+					  </div>
+					  </div>
+					  <!-- <div class="col-md-2"></div> -->
+				  </div>
+				  <div class="panel" style="background-color: white;box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+					<div class="panel-heading" style="background-color: white;">
+				<h4 class="text-center"> Additional tips</h4>
+				
+					 </div>
+					<div class="panel-body" style="background-color: white; padding-bottom: 10px;">
+						<ul>
+							<li><h5>Keep the strip bandage on for the next several hours; to avoid a skin rash, clean the area around the bandage with soap and water</h5></li>
+							<li><h5>Don’t do any heavy lifting or vigorous exercise for the rest of the day</h5></li>
+							<li><h5>If the needle site starts to bleed, apply pressure and raise your arm straight up for 5-10 minutes or until bleeding stops.</h5></li>
+							<li><h5>If you experience dizziness or lightheadedness, stop what you’re doing and sit down or lie down until you feel better; avoid performing any activity where fainting may lead to injury for at least 24 hours.</h5></li>
+							<li><h5>Keep eating iron-rich foods.</h5></li>
+							<li><h5>If you donate frequently, be sure to take multivitamins with iron to ensure you continue to replenish your iron stores before your next donation.</h5></li>
+											</ul>	
+				</div>
+				  </div>
+			  </div>
+			  <div class="panel-footer"></div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+
+
+
+	  <div class="container" style="margin-top: -50px;margin-bottom: -100px;">
+		<div class="row">
+		  <div class="col-md-12">
+			<div class="panel" style="box-shadow:2px 2px 2px #000000,2px 2px 4px #000000;">
+			  <div class="panel-heading"></div>
+			  <div class="panel-body" style="padding: 7%;">
+				<center><a href="{% url 'appointment' %}"><div class="sub"><button class="btn btn-primary btn-lg">Make an appointment</button></div></a></center>
+			  </div>
+			  <div class="panel-footer"></div>
+			</div>
+		  </div>
+		</div>
+	  </div>
+</body>
+
+<footer>
+	<div id="suggest" class="text-center">
+	  <h2 class="text-center">Leave a suggestion</h2>
+	  <form action="">
+		Subject:<br>
+		<input type="text"><br>
+		Description:<br>
+		<textarea id="area" name="w3review" rows="4" cols="50"></textarea>
+	  </form>
+	</div>
+	<a class="social" href="http://"><i class="fas fa-instagram" class="">Instagram</i></a>
+	<a href="http://"><i class="fas fa-twitter">Twitter</i></a>
+	<a href="http://"><i class="fas fa-facebook-square">Facebook</i></a>
+  </footer>
+{% endblock %}

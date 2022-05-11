@@ -1,18 +1,26 @@
 #top{
     background-image: url('../static/four.jpeg');
     /* background-color: #111; */
-    height:550px;
+    height:530px;
+    width: 100%;
+  }
+  #top4{
+    background-image: url('../static/four.jpeg');
+    /* background-color: #111; */
+    height:530px;
     width: 100%;
   }
   #top h1{
     padding-top:10%;
     color: white;
-    font-size: 30px;
+    font-size: 60px;
+
     
   }
   #top h2{
     
     color: white;
+    font-size: 50px;
     
     
   }
@@ -25,10 +33,12 @@
   }
 
   #top2{
-    background-image: url('../static/three.jpg');
+    background-image: url('../static/two.jpg');
     background-position: bottom;
-    /* background-color: #111; */
-    height:500px;
+    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    height:450px;
     width: 100%;
   }
   #top3{
@@ -37,7 +47,7 @@
     background-repeat: no-repeat;
     background-size: cover;
     /* background-color: #111; */
-    height:500px;
+    height:350px;
     width: 100%;
   }
 
@@ -348,5 +358,9 @@ footer input{
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+textarea{
+  width: 70%;
 }
 
