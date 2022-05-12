@@ -5,14 +5,20 @@
 <div class="panel-heading" id="top3">
    <h3 class="text-center">{{center.name}} Donation center</h3>
 </div>
+<div class="panel-heading" style="margin-top: 5px;">
+    <h2 class="text-center" style="font-weight: bold;"> Donation center information</h2>
+
+</div>
    <div class="container" style="margin-top: 30px;">
 	   <div  class="row">
 	   <div class="col-md-6">
            <div class="panel">
                <div class="panel-heading"></div>
-               <div class="panel-body">
+               <div class="panel-body" style="box-shadow: 2px 2px 4px black; padding: 5px; background-color: white;">
 		   <h5>Email:{{center.email}}</h5> <br>
-        <h5> Phone number:{{center.phone_number}}</h5>
+        <h5> Phone number:{{center.phone_number}}</h5><br>
+        <h5>Location:{{center.location}}</h5> <br>
+        <h5>Open: <span style="color: blue;">7:00- 17:00</span></h5> <br>
         <div class="panel-footer"></div>
     </div>
         </div>
@@ -20,14 +26,14 @@
 	   </div>
 	   <div class="col-md-6">
         <div class="panel">
-            <div class="panel-heading">
+            <div class="panel-heading" style="background-color: white;box-shadow: 2px 2px 4px black;">
                 <h3 class="text-center">On going events</h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body" style="height: 240px; box-shadow: 2px 2px 4px black; padding: 5px; background-color: white;">
 		   
 		
 		   {% for event in events%}
-            {{event.name}}
+            <a href="" style="color: black;"><h5 class="" style="border-bottom: 2px solid black;margin: 2px;padding: 1%;">{{event.name}}   <span style="float: right;">{{event.starting}}</span></h5></a>
 		   {% endfor%}
     
         <div class="panel-footer"></div>
@@ -38,6 +44,21 @@
 	
    </div>
    <div></div>
+
+   <footer>
+    <div id="suggest" class="text-center">
+      <h2 class="text-center">Leave a suggestion</h2>
+      <form action="">
+        Subject:<br>
+        <input type="text"><br>
+        Description:<br>
+        <textarea id="area" name="w3review" rows="4" cols="50"></textarea>
+      </form>
+    </div>
+    <a class="social" href="http://instagram.com"><i class="fas fa-instagram" class="">Instagram</i></a>
+    <a href="http://"><i class="fas fa-twitter">Twitter</i></a>
+    <a href="http://"><i class="fas fa-facebook-square">Facebook</i></a>
+  </footer>
 
 {% endblock %}
 
